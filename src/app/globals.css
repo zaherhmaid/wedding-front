@@ -4,42 +4,93 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --wedding-gold: #cfa13a;
+  --wedding-gold-light: #f5e6c8;
+  --wedding-ink: #1c1917;
+  --wedding-cream: #faf7f2;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-arabic), "Amiri", serif;
+  -webkit-font-smoothing: antialiased;
 }
+
 @layer utilities {
   .animate-fade-in-up {
     animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-reveal {
+    animation: reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .font-display {
+    font-family: var(--font-serif), "Playfair Display", serif;
+  }
+
+  .invitation-scroll {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .invitation-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(
+      135deg,
+      var(--wedding-gold-light) 0%,
+      var(--wedding-gold) 50%,
+      #a67c2e 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
