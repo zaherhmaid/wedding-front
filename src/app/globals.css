@@ -1,75 +1,116 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
-  --wedding-gold: #cfa13a;
-  --wedding-gold-light: #f5e6c8;
-  --wedding-ink: #1c1917;
-  --wedding-cream: #faf7f2;
+  --wedding-gold: #c4a35a;
+  --wedding-gold-soft: #e8d5a3;
+  --wedding-ink: #12100e;
+  --wedding-ink-soft: #2a2520;
+  --wedding-pearl: #f6f1e8;
+  --wedding-pearl-deep: #ebe4d6;
+  --wedding-mist: #faf7f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
 }
 
 body {
   font-family: var(--font-arabic), "Amiri", serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--wedding-ink);
+  color: var(--wedding-pearl);
 }
 
-@layer utilities {
-  .animate-fade-in-up {
-    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .animate-reveal {
-    animation: reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .font-display {
-    font-family: var(--font-serif), "Playfair Display", serif;
-  }
-
-  .invitation-scroll {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .invitation-section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-  }
-
-  .gold-gradient-text {
-    background: linear-gradient(
-      135deg,
-      var(--wedding-gold-light) 0%,
-      var(--wedding-gold) 50%,
-      #a67c2e 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .glass-panel {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-  }
+.font-display {
+  font-family: var(--font-display), "Cormorant Garamond", Georgia, serif;
 }
 
-@keyframes fadeInUp {
+.font-arabic-display {
+  font-family: var(--font-arabic), "Amiri", serif;
+}
+
+/* Scroll invitation */
+.invitation-scroll {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.invitation-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Motions */
+.animate-fade-up {
+  animation: fadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s ease both;
+}
+
+.animate-reveal {
+  animation: reveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-doors-left {
+  animation: doorLeft 0.75s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.animate-doors-right {
+  animation: doorRight 0.75s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -84,13 +125,41 @@ body {
   }
 }
 
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
+@keyframes doorLeft {
   to {
-    opacity: 1;
+    transform: translateX(-105%);
+  }
+}
+
+@keyframes doorRight {
+  to {
+    transform: translateX(105%);
+  }
+}
+
+@keyframes softPulse {
+  0%,
+  100% {
     transform: scale(1);
   }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+.seal-pulse {
+  animation: softPulse 2.4s ease-in-out infinite;
+}
+
+/* Ornamental rule */
+.ornament-line {
+  height: 1px;
+  width: 3.5rem;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--wedding-gold),
+    transparent
+  );
+  margin-inline: auto;
 }

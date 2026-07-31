@@ -1,15 +1,11 @@
-import { Playfair_Display, Inter, Amiri } from "next/font/google";
+import { Cormorant_Garamond, Amiri } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-serif",
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
+  variable: "--font-display",
 });
 
 const amiri = Amiri({
@@ -19,8 +15,9 @@ const amiri = Amiri({
 });
 
 export const metadata = {
-  title: "Invetini - Votre Invitation de Mariage",
-  description: "Célébrez avec nous cette journée inoubliable.",
+  title: "Invetini — دعوات زفاف رقمية",
+  description:
+    "دعوات زفاف أنيقة مع عدّ تنازلي وبرنامج الحفل وتأكيد الحضور.",
 };
 
 export default function RootLayout({ children }) {
@@ -28,9 +25,9 @@ export default function RootLayout({ children }) {
     <html
       lang="ar"
       dir="rtl"
-      className={`${inter.variable} ${playfair.variable} ${amiri.variable}`}
+      className={`${cormorant.variable} ${amiri.variable}`}
     >
-      <body className="antialiased bg-[#0c0a09] text-stone-100 font-[family-name:var(--font-arabic)]">
+      <body className="antialiased font-[family-name:var(--font-arabic)]">
         {children}
       </body>
     </html>
