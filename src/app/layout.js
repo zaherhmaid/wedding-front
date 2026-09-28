@@ -16,8 +16,7 @@ const amiri = Amiri({
 
 export const metadata = {
   title: "Invetini — دعوات زفاف رقمية",
-  description:
-    "دعوات زفاف أنيقة مع عدّ تنازلي وبرنامج الحفل وتأكيد الحضور.",
+  description: "دعوات زفاف أنيقة مع عدّ تنازلي وبرنامج الحفل وتأكيد الحضور.",
 };
 
 export default function RootLayout({ children }) {
